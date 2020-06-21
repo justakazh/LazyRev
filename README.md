@@ -1,7 +1,7 @@
-# LazyRev-V.2
+# LazyRev
 LazyRev for Lazy People
 
-<h1>LazyRev V.2 release!</h1>
+<h1>LazyRev release!</h1>
 
 Fitur:
 - Threading
