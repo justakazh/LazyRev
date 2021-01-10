@@ -12,6 +12,7 @@ Fitur:
 
 NB: Sebelum download wajib follow github gw ya tod, jangan lupa klik star nya juga >:(
 
-Link : https://github.com/justakazh/LazyRev
+Link : https://github.com/justakazh/LazyRev/blob/master/LazyRev.exe
+<br>
 <br>
 <img src="Capture.PNG">
