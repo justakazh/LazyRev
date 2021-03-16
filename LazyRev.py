@@ -23,12 +23,15 @@ def LazyRev(url):
 		site = url.replace("https://","").replace("http://","").replace("/","").strip()
 		s = socket.gethostbyname(site)
 		if s+"\n" not in open("ips.txt", "r").readlines():
-			r = requests.post("http://apapedulimu.ddns.net/revip/", data={"domain":site}).text
-			de = json.loads(r)
-			for i in de['url']:
-				print("[>] http://"+i)
-				open("_LazyRev.txt", "a").write("http://"+i+"\n")
-			open("ips.txt", "a").write(s+"\n")
+			try:
+				r = requests.post("http://apapedulimu.ddns.net/revip/", data={"domain":site}).text
+				de = json.loads(r)
+				for i in de['url']:
+					print("[>] http://"+i)
+					open("_LazyRev.txt", "a").write("http://"+i+"\n")
+				open("ips.txt", "a").write(s+"\n")
+			except:
+				pass
 		else:
 			print(url+" | duplicate ip!")
 	except:
