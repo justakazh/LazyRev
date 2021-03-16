@@ -1,8 +1,8 @@
 import requests
 import json
+import socket
 from multiprocessing.dummy import Pool
 print("""
-
   _                     _____            
  | |                   |  __ \           
  | |     __ _ _____   _| |__) |_____   __
@@ -10,22 +10,26 @@ print("""
  | |___| (_| |/ /| |_| | | \ \  __/\ V / 
  |______\__,_/___|\__, |_|  \_\___| \_/  
                    __/ |                 
-                  |___/   -gabut version-               
+                  |___/   
 
-*Gausah ngeluh result dikit, bikin bot sendiri kalo mau banyak\n*Tetap prangas prenges senajan result gawe stress"
 Coded by @justakazh
+https://github.com/justakazh
 ---------------------------------------------------------------------------
 	""")
 open("ips.txt", "a")
 
 def LazyRev(url):
 	site = url.replace("https://","").replace("http://","").replace("/","").strip()
-	r = requests.post("http://apapedulimu.ddns.net/revip/", data={"domain":site}).content
-	de = json.loads(r)
-	for i in de['url']:
-		print("[>] http://"+i)
-		open("_LazyRev.txt", "a").write("http://"+i+"\n")
-
+	s = socket.gethostbyname(site)
+	if s+"\n" not in open("ips.txt", "r").readlines():
+		r = requests.post("http://apapedulimu.ddns.net/revip/", data={"domain":site}).text
+		de = json.loads(r)
+		for i in de['url']:
+			print("[>] http://"+i)
+			open("_LazyRev.txt", "a").write("http://"+i+"\n")
+		open("ips.txt", "a").write(s+"\n")
+	else:
+		print(url+" | duplicate ip!")
 lismu = [i.strip() for i in open(raw_input("List > "), "r").readlines()]
 z = Pool(input("Thread > "))
 z.map(LazyRev, lismu)
