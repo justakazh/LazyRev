@@ -19,18 +19,12 @@ Coded by @justakazh
 open("ips.txt", "a")
 
 def LazyRev(url):
-	try:
-		site = url.replace("https://","").replace("http://","").replace("/","").strip()
-		r = requests.get("https://justakazh.nasihosting.com/api/?url="+site).content
-		de = json.loads(r)
-		for i in de:
-			try:
-				print("[>] http://"+i)
-				open("_LazyRev.txt", "a").write("http://"+i+"\n")
-			except:
-				pass
-	except:
-		pass
+	site = url.replace("https://","").replace("http://","").replace("/","").strip()
+	r = requests.post("http://apapedulimu.ddns.net/revip/", data={"domain":site}).content
+	de = json.loads(r)
+	for i in de['url']:
+		print("[>] http://"+i)
+		open("_LazyRev.txt", "a").write("http://"+i+"\n")
 
 lismu = [i.strip() for i in open(raw_input("List > "), "r").readlines()]
 z = Pool(input("Thread > "))
