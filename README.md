@@ -5,7 +5,7 @@ LazyRev for Lazy People
 
 Fitur:
 - Threading
-- ViewDNS API
+- Private API
 - Detect same IP (kalo ada ip yang udah di reverse langsung skip)
 - Unlimited
 - .EXE version (Santuy bukan ransom/virus)
